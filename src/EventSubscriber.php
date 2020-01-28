@@ -8,6 +8,9 @@ final class EventSubscriber
 
     public function __construct(string $storedEventRepository)
     {
+             if ( ! $storedEventRepository ) {
+                             $storedEventRepository = config('event-sourcing.stored_event_repository');
+             }
         $this->repository = app($storedEventRepository);
     }
 
